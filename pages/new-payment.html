@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Payment - FitCore</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <h1 class="logo">FitCore</h1>
             <ul class="nav-menu">
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="payments.html">Payments</a></li>
-                <li><a href="create-payment.html" class="active">New Payment</a></li>
-                <li><a href="members.html">Members</a></li>
-                <li><a href="trainers.html">Trainers</a></li>
-                <li><a href="invoices.html">Invoices</a></li>
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="payments-dashboard.html">Payments</a></li>
+                <li><a href="new-payment.html" class="active">New Payment</a></li>
+                <li><a href="invoice-view.html">Invoice</a></li>
             </ul>
         </div>
     </nav>
@@ -118,14 +116,14 @@
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary btn-lg">Create Payment</button>
                     <button type="reset" class="btn btn-secondary btn-lg">Clear</button>
-                    <a href="payments.html" class="btn btn-secondary btn-lg">Cancel</a>
+                    <a href="payments-dashboard.html" class="btn btn-secondary btn-lg">Cancel</a>
                 </div>
             </form>
 
             <div id="successMessage" class="alert alert-success" style="display:none; margin-top: 20px;">
                 <h4>✅ Payment Created Successfully!</h4>
                 <p id="successText"></p>
-                <a href="payments.html" class="btn btn-primary" style="margin-top: 10px;">View All Payments</a>
+                <a href="payments-dashboard.html" class="btn btn-primary" style="margin-top: 10px;">View All Payments</a>
             </div>
 
             <div id="errorMessage" class="alert alert-error" style="display:none; margin-top: 20px;">
@@ -139,7 +137,7 @@
         <p>&copy; 2024 FitCore Payment System. All rights reserved.</p>
     </footer>
 
-    <script src="api.js"></script>
-    <script src="create-payment.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/new-payment.js"></script>
 </body>
 </html>

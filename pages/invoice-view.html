@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice View - FitCore</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/invoice.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitCore</h1>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Dashboard</a></li>
+                <li><a href="payments-dashboard.html">Payments</a></li>
+                <li><a href="new-payment.html">New Payment</a></li>
+                <li><a href="invoice-view.html" class="active">Invoice</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Invoice View</h1>
+            <p>Printable invoice for payment records</p>
+        </div>
+
+        <div class="section">
+            <div class="search-box">
+                <input type="text" id="invoiceIdInput" placeholder="Enter Invoice ID..." class="search-input">
+                <button onclick="loadInvoice()" class="btn btn-primary">Load Invoice</button>
+                <button onclick="printInvoice()" class="btn btn-secondary" id="printBtn" style="display:none;">Print</button>
+                <button onclick="downloadInvoice()" class="btn btn-secondary" id="downloadBtn" style="display:none;">Download PDF</button>
+            </div>
+        </div>
+
+        <div class="section" id="invoiceContainer" style="display:none;">
+            <div id="invoicePreview" class="invoice-preview">
+                <div class="invoice-header">
+                    <h1>INVOICE</h1>
+                    <p id="invoiceNumber">INV-001</p>
+                </div>
+
+                <div class="invoice-details">
+                    <div class="invoice-detail-group">
+                        <h3>From</h3>
+                        <p><strong>FitCore Gym</strong></p>
+                        <p>Payment & Discount Management</p>
+                        <p>Email: info@fitcore.gym</p>
+                    </div>
+                    <div class="invoice-detail-group">
+                        <h3>Bill To</h3>
+                        <p id="payeeName">Member Name</p>
+                        <p id="payeeType">PREMIUM</p>
+                    </div>
+                </div>
+
+                <div class="invoice-items">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Amount (LKR)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="itemDescription">Payment</td>
+                                <td>1</td>
+                                <td id="itemAmount">0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="invoice-totals">
+                    <table class="totals-table">
+                        <tr>
+                            <td>Subtotal:</td>
+                            <td id="subtotal">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Discount (<span id="discountPercentDisplay">0</span>%):</td>
+                            <td id="discountAmount">0.00</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total:</td>
+                            <td id="total">0.00</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <p><strong>Status:</strong> <span id="paymentStatus">PENDING</span></p>
+                    <p><strong>Payment Method:</strong> <span id="paymentMethod">Card</span></p>
+                    <p><strong>Date:</strong> <span id="paymentDate">2025-01-01</span></p>
+                    <p><strong>Notes:</strong> <span id="notes">-</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="alert alert-error" style="display:none; margin-top: 20px;">
+            <h4>❌ Error Loading Invoice</h4>
+            <p id="errorText"></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 FitCore Payment System. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/invoice.js"></script>
+</body>
+</html>

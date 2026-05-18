@@ -1,6 +1,6 @@
 // FitCore Payment API - Utility Functions
 
-const API_BASE_URL = 'http://192.168.1.2:8080/api';
+const API_BASE_URL = 'http://localhost:8080/api';
 
 // Helper function for API calls
 async function apiCall(endpoint, method = 'GET', body = null) {

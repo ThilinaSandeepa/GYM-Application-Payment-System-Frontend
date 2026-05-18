@@ -160,17 +160,3 @@ async function filterByStatus(status) {
     }
 }
 
-async function viewPaymentDetails(id) {
-    try {
-        const payment = await getPaymentById(id);
-        // Could open a modal with details
-        console.log('Payment Details:', payment);
-    } catch (error) {
-        showError('Failed to load payment details: ' + error.message);
-    }
-}
-
-function editPayment(id) {
-    // Could open edit modal
-    console.log('Edit payment:', id);
-}

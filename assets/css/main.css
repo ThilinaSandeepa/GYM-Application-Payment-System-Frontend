@@ -292,11 +292,6 @@ body {
     background-color: #f97316;
 }
 
-.btn-info {
-    background-color: #aaedfe;
-    color: #001f25;
-    border-color: #aaedfe;
-}
 
 .btn-danger {
     background-color: var(--error-container);
