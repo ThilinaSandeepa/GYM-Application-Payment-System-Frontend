@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - FitCore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitCore</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="payments.html" class="active">Payments</a></li>
+                <li><a href="create-payment.html">New Payment</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>All Payments</h1>
+            <a href="create-payment.html" class="btn btn-primary">+ New Payment</a>
+        </div>
+
+        <div class="section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by invoice, member, or trainer..." class="search-input">
+                <button onclick="searchPayments()" class="btn btn-primary">Search</button>
+                <button onclick="loadAllPayments()" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <div class="filter-buttons" style="margin: 20px 0;">
+                <button onclick="filterByStatus('PAID')" class="btn btn-success">Paid</button>
+                <button onclick="filterByStatus('PENDING')" class="btn btn-warning">Pending</button>
+                <button onclick="loadAllPayments()" class="btn btn-secondary">All</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="table-wrapper">
+                <table class="data-table" id="paymentsTable">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Payee</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Discount</th>
+                            <th>Final Amount</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentsTableBody">
+                        <tr><td colspan="10" class="loading-row">Loading payments...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Payment</h2>
+                <button onclick="closeEditModal()" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label>Amount (LKR)</label>
+                        <input type="number" id="editAmount" class="form-control" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Discount %</label>
+                        <select id="editDiscount" class="form-control">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="editStatus" class="form-control">
+                            <option value="PAID">Paid</option>
+                            <option value="PENDING">Pending</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea id="editNotes" class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button onclick="savePaymentEdit()" class="btn btn-primary">Save Changes</button>
+                <button onclick="closeEditModal()" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 FitCore Payment System. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="payments.js"></script>
+</body>
+</html>

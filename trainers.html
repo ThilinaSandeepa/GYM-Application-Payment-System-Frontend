@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainers - FitCore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitCore</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="create-payment.html">New Payment</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="trainers.html" class="active">Trainers</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Trainers</h1>
+            <button onclick="openAddTrainerModal()" class="btn btn-primary">+ Add Trainer</button>
+        </div>
+
+        <div class="section">
+            <div class="table-wrapper">
+                <table class="data-table" id="trainersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Specialization</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trainersTableBody">
+                        <tr><td colspan="5" class="loading-row">Loading trainers...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Trainer Modal -->
+    <div id="trainerModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="trainerModalTitle">Add New Trainer</h2>
+                <button onclick="closeTrainerModal()" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="trainerForm">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" id="trainerName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="trainerEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Specialization *</label>
+                        <input type="text" id="trainerSpecialization" class="form-control"
+                               placeholder="e.g., Strength Training, Yoga, Cardio" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button onclick="saveTrainer()" class="btn btn-primary">Save Trainer</button>
+                <button onclick="closeTrainerModal()" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 FitCore Payment System. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="trainers.js"></script>
+</body>
+</html>

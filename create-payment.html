@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Payment - FitCore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitCore</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="create-payment.html" class="active">New Payment</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Create New Payment</h1>
+            <p>Record a new payment transaction</p>
+        </div>
+
+        <div class="form-container">
+            <form id="paymentForm" class="payment-form">
+                <div class="form-section">
+                    <h3>Payee Information</h3>
+
+                    <div class="form-group">
+                        <label>Payee Type *</label>
+                        <select id="payeeType" name="payeeType" class="form-control" required onchange="updatePayeeOptions()">
+                            <option value="">-- Select Payee Type --</option>
+                            <option value="MEMBER">Member</option>
+                            <option value="TRAINER">Trainer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="memberGroup" style="display:none;">
+                        <label>Select Member *</label>
+                        <select id="memberId" name="memberId" class="form-control" onchange="updateMemberDiscount()">
+                            <option value="">-- Loading Members --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="trainerGroup" style="display:none;">
+                        <label>Select Trainer *</label>
+                        <select id="trainerId" name="trainerId" class="form-control">
+                            <option value="">-- Loading Trainers --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Payment Details</h3>
+
+                    <div class="form-group">
+                        <label>Amount (LKR) *</label>
+                        <input type="number" id="amount" name="amount" class="form-control"
+                               placeholder="Enter amount" min="0" step="0.01" required onchange="calculateFinalAmount()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Method *</label>
+                        <select id="paymentMethod" name="paymentMethod" class="form-control" required>
+                            <option value="">-- Select Method --</option>
+                            <option value="CARD">Card</option>
+                            <option value="CASH">Cash</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Discount Percentage (%)</label>
+                        <select id="discountPercent" name="discountPercent" class="form-control" onchange="calculateFinalAmount()">
+                            <option value="0">0% - No Discount</option>
+                            <option value="5">5% Discount</option>
+                            <option value="10">10% Discount</option>
+                            <option value="15">15% Discount</option>
+                            <option value="20">20% Discount</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Discount Amount (LKR)</label>
+                        <input type="text" id="discountAmount" class="form-control" readonly placeholder="0.00">
+                    </div>
+
+                    <div class="form-group highlight">
+                        <label>Final Amount (LKR) *</label>
+                        <input type="text" id="finalAmount" class="form-control" readonly placeholder="0.00" style="font-size: 18px; font-weight: bold;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Status *</label>
+                        <select id="status" name="status" class="form-control" required>
+                            <option value="">-- Select Status --</option>
+                            <option value="PAID">Paid</option>
+                            <option value="PENDING">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Date *</label>
+                        <input type="date" id="paymentDate" name="paymentDate" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea id="notes" name="notes" class="form-control" placeholder="Optional notes" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">Create Payment</button>
+                    <button type="reset" class="btn btn-secondary btn-lg">Clear</button>
+                    <a href="payments.html" class="btn btn-secondary btn-lg">Cancel</a>
+                </div>
+            </form>
+
+            <div id="successMessage" class="alert alert-success" style="display:none; margin-top: 20px;">
+                <h4>✅ Payment Created Successfully!</h4>
+                <p id="successText"></p>
+                <a href="payments.html" class="btn btn-primary" style="margin-top: 10px;">View All Payments</a>
+            </div>
+
+            <div id="errorMessage" class="alert alert-error" style="display:none; margin-top: 20px;">
+                <h4>❌ Error Creating Payment</h4>
+                <p id="errorText"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 FitCore Payment System. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="create-payment.js"></script>
+</body>
+</html>

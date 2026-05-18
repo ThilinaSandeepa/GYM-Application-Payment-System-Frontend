@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitCore Payment Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">FitCore</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="payments.html">Payments</a></li>
+                <li><a href="create-payment.html">New Payment</a></li>
+                <li><a href="members.html">Members</a></li>
+                <li><a href="trainers.html">Trainers</a></li>
+                <li><a href="invoices.html">Invoices</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Payment Dashboard</h1>
+            <p>Gym Management System - Payment & Discount Module</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid" id="statsContainer">
+            <div class="stat-card loading">
+                <div class="stat-icon">💰</div>
+                <div class="stat-info">
+                    <h3>Total Revenue</h3>
+                    <p class="stat-value">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-card loading">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <h3>Paid Payments</h3>
+                    <p class="stat-value">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-card loading">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-info">
+                    <h3>Pending Payments</h3>
+                    <p class="stat-value">Loading...</p>
+                </div>
+            </div>
+            <div class="stat-card loading">
+                <div class="stat-icon">🎁</div>
+                <div class="stat-info">
+                    <h3>Discounted</h3>
+                    <p class="stat-value">Loading...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Payments Section -->
+        <div class="section">
+            <h2>Recent Payments</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by invoice, member, or trainer..." class="search-input">
+                <button onclick="searchPayments()" class="btn btn-primary">Search</button>
+                <button onclick="loadPayments()" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="data-table" id="paymentsTable">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Payee</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Discount</th>
+                            <th>Final Amount</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentsTableBody">
+                        <tr><td colspan="10" class="loading-row">Loading payments...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="section">
+            <h2>Filter by Status</h2>
+            <div class="filter-buttons">
+                <button onclick="filterByStatus('PAID')" class="btn btn-success">Paid Payments</button>
+                <button onclick="filterByStatus('PENDING')" class="btn btn-warning">Pending Payments</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 FitCore Payment System. All rights reserved.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

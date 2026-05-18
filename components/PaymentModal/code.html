@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitCore - New Payment</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a technical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353534;
+            border: 1px solid #131313;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #474746;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#aaedfe",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "secondary": "#c8c6c5",
+                        "primary-container": "#c7f300",
+                        "primary-fixed-dim": "#aed500",
+                        "inverse-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface": "#131313",
+                        "tertiary-fixed-dim": "#8ed1e1",
+                        "on-primary": "#293500",
+                        "surface-bright": "#3a3939",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "primary": "#ffffff",
+                        "on-tertiary-container": "#256d7c",
+                        "primary-fixed": "#c7f300",
+                        "tertiary": "#ffffff",
+                        "surface-container": "#201f1f",
+                        "surface-container-low": "#1c1b1b",
+                        "outline": "#8f9379",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-variant": "#353534",
+                        "on-secondary": "#303030",
+                        "on-primary-fixed": "#171e00",
+                        "on-secondary-container": "#b7b5b4",
+                        "on-surface-variant": "#c5c9ac",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#aaedfe",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#004e5b",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#576c00",
+                        "on-tertiary-fixed": "#001f25",
+                        "on-background": "#e5e2e1",
+                        "secondary-container": "#474746",
+                        "inverse-primary": "#526600",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#3d4d00",
+                        "outline-variant": "#444933",
+                        "surface-tint": "#aed500",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2a",
+                        "on-tertiary": "#00363f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px", /* Enforcing sharp corners for minimalist-technical style */
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px" /* Keeping full for avatars/radio buttons if needed */
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "xl": "48px",
+                        "gutter": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Geist", "sans-serif"],
+                        "data-mono": ["Geist Mono", "monospace"],
+                        "headline-md": ["Archivo Narrow", "sans-serif"],
+                        "headline-lg": ["Archivo Narrow", "sans-serif"],
+                        "body-md": ["Geist", "sans-serif"],
+                        "body-lg": ["Geist", "sans-serif"],
+                        "headline-sm": ["Archivo Narrow", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "data-mono": ["14px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-sm": ["16px", { "lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex items-center justify-center overflow-hidden">
+<!-- Abstract Background representing the underlying dashboard (suppressed navigation) -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #353534 1px, transparent 0); background-size: 32px 32px;"></div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-[#000000] bg-opacity-80 backdrop-blur-sm z-40 flex items-center justify-center p-margin-mobile md:p-margin-desktop">
+<!-- Modal Surface -->
+<div class="w-full max-w-[800px] bg-surface-container-low border border-outline-variant shadow-2xl z-50 flex flex-col max-h-full">
+<!-- Modal Header -->
+<div class="flex items-center justify-between px-lg py-md border-b border-outline-variant bg-surface-container">
+<h2 class="font-headline-lg text-headline-lg text-primary">New Payment</h2>
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors flex items-center justify-center w-8 h-8">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-lg overflow-y-auto flex-1">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-xl">
+<!-- Member Type Toggle -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Member Type</label>
+<div class="flex bg-surface-container-highest border border-outline-variant p-1">
+<button class="flex-1 py-2 font-label-caps text-label-caps text-primary-fixed border border-primary-fixed bg-surface-container-low uppercase" type="button">Premium Member</button>
+<button class="flex-1 py-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary uppercase transition-colors" type="button">New Member</button>
+</div>
+</div>
+<!-- Payee Type Toggle -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Payee Type</label>
+<div class="flex bg-surface-container-highest border border-outline-variant p-1">
+<button class="flex-1 py-2 font-label-caps text-label-caps text-primary-fixed border border-primary-fixed bg-surface-container-low uppercase" type="button">Member</button>
+<button class="flex-1 py-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary uppercase transition-colors" type="button">Trainer</button>
+</div>
+</div>
+<!-- Name Dropdown -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="payee-name">Member/Trainer Name</label>
+<div class="relative">
+<select class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-body-md text-body-md px-md py-sm appearance-none focus:outline-none focus:border-primary-fixed transition-colors h-[42px]" id="payee-name">
+<option value="">Select Name...</option>
+<option value="1">Marcus Johnson (MEM-4092)</option>
+<option value="2">Sarah Connor (MEM-3911)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Invoice ID (Read-only) -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Invoice ID</label>
+<div class="w-full bg-surface-container border border-outline-variant text-primary-fixed font-data-mono text-data-mono px-md py-sm flex items-center h-[42px]">
+                            INV-005
+                        </div>
+</div>
+<!-- Amount Input -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="amount">Amount (LKR)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-data-mono text-data-mono px-md py-sm focus:outline-none focus:border-primary-fixed transition-colors h-[42px] pl-[60px]" id="amount" placeholder="0.00" type="number" value="5000"/>
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-caps text-label-caps">LKR</span>
+</div>
+</div>
+<!-- Payment Method Toggle -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Payment Method</label>
+<div class="flex bg-surface-container-highest border border-outline-variant p-1 h-[42px]">
+<button class="flex-1 flex items-center justify-center gap-2 font-label-caps text-label-caps text-primary-fixed border border-primary-fixed bg-surface-container-low uppercase" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">credit_card</span> Card
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 font-label-caps text-label-caps text-on-surface-variant hover:text-primary uppercase transition-colors" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">payments</span> Cash
+                            </button>
+</div>
+</div>
+<!-- Discount Dropdown -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="discount">Discount %</label>
+<div class="relative">
+<select class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-data-mono text-data-mono px-md py-sm appearance-none focus:outline-none focus:border-primary-fixed transition-colors h-[42px]" id="discount">
+<option value="0">0%</option>
+<option value="5">5%</option>
+<option selected="" value="10">10%</option>
+<option value="15">15%</option>
+<option value="20">20%</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<p class="font-body-md text-[12px] text-tertiary-fixed-dim mt-1">Premium Members receive a 10% loyalty discount automatically.</p>
+</div>
+<!-- Final Amount (Read-only) -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Final Amount (LKR)</label>
+<div class="w-full bg-surface-container border border-outline-variant text-primary font-headline-md text-headline-md px-md py-sm flex items-center h-[42px]">
+                            4,500
+                        </div>
+</div>
+<!-- Payment Date -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="payment-date">Payment Date</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-data-mono text-data-mono px-md py-sm focus:outline-none focus:border-primary-fixed transition-colors h-[42px]" id="payment-date" type="date" value="2023-10-24"/>
+</div>
+</div>
+<!-- Status Dropdown -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="status">Status</label>
+<div class="relative">
+<select class="w-full bg-surface-container-high border border-outline-variant text-primary-fixed font-label-caps text-label-caps px-md py-sm appearance-none focus:outline-none focus:border-primary-fixed transition-colors h-[42px] uppercase" id="status">
+<option selected="" value="paid">Paid</option>
+<option value="pending">Pending</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary-fixed pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Notes -->
+<div class="flex flex-col gap-sm md:col-span-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="notes">Notes</label>
+<textarea class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-body-md text-body-md p-md focus:outline-none focus:border-primary-fixed transition-colors resize-none" id="notes" placeholder="Add any specific details regarding this transaction..." rows="3"></textarea>
+</div>
+</form>
+</div>
+<!-- Modal Footer -->
+<div class="px-lg py-md border-t border-outline-variant bg-surface-container flex flex-col-reverse sm:flex-row justify-end items-center gap-md">
+<button class="w-full sm:w-auto px-lg py-sm border border-outline-variant text-on-surface font-label-caps text-label-caps uppercase hover:bg-surface-container-high transition-colors" type="button">
+                    Cancel
+                </button>
+<button class="w-full sm:w-auto px-lg py-sm bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps uppercase hover:bg-primary-fixed-dim transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">receipt_long</span> Generate Invoice &amp; Save
+                </button>
+</div>
+</div>
+</div>
+</body></html>
